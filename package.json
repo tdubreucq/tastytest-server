@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "concurrently \"tsc --watch\" \"nodemon dist/index.js \"",
     "build": "tsc",
-    "start": "node dist/server.ts",
+    "start": "ts-node server.ts",
     "start:dev": "nodemon --exec ts-node server.ts"
   },
   "keywords": [],
