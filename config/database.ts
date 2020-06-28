@@ -7,7 +7,7 @@ console.log(config)
 const getPoolConfig = (): Pool => {
 
     let poolConfig
-    if (config.parsed!.MODE === 'PROD') {
+    if (process.env.MODE === 'PROD') {
         poolConfig = {
             connectionString: process.env.DATABASE_URL,
             ssl: {
