@@ -22,6 +22,20 @@ import {
     getOptionsByItemId
 } from "../controllers/options.controller";
 import {createChoice, deleteChoices} from "../controllers/choices.controller";
+import {pool} from "../config/database";
+
+router.get('/db', async (req, res) => {
+    try {
+        const client = await pool.connect();
+        const result = await client.query('SELECT * FROM test_table');
+        const results = { 'results': (result) ? result.rows : null};
+        res.render('pages/db', results );
+        client.release();
+    } catch (err) {
+        console.error(err);
+        res.send("Error " + err);
+    }
+})
 
 router.get('/menuItems', getEntries);
 router.get('/menuItems/entry', getAppetizers);
